@@ -13,5 +13,9 @@ class Route(object):
 		return self.__uri == uri
 
 	@property
+	def uri(self):
+		return self.__uri
+
+	@property
 	def template(self):
 		return self.__template

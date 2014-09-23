@@ -9,6 +9,13 @@
                 margin: 1.5em;
                 font-family: Tahoma, Verdana, Arial, sans-serif;
             }
+            h1 {
+                width: 960;
+                background: #F1A95C;
+                color: #38342E;
+                font-size: 1.5em;
+                text-align: centre;
+            }
             table {
             	border-collapse:collapse;
             }
@@ -27,6 +34,7 @@
     </head>
     <body>
         <div class="container">
+            <h1>NEWS</h1>
           {% block content %}{% endblock %}
 
           <div class="footer">
