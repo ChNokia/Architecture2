@@ -1,4 +1,7 @@
-from urllib.parse import urlparse
+try:
+	from urllib.parse import urlparse
+except ImportError:
+	from urlparse import urlparse
 
 class Route(object):
 	def __init__(self, route_str):
@@ -6,6 +9,12 @@ class Route(object):
 			raise ValueError('Empty route_str')
 
 		self.__uri = route_str
+
+		if self.__uri == '/':
+			self.__template = 'news_template.tpl'
+
+			return
+
 		folder_list = self.__uri.split('/')
 		self.__template = '-'.join([folder for folder in folder_list if folder]) + '.tpl'
 

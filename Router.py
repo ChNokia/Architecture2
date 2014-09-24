@@ -11,6 +11,9 @@ class Router(object):
 		if not uri:
 			raise ValueError('Empty uri')
 
+		if uri[-1] != '/':
+			uri = uri + '/'
+		
 		for route in self.__configs:
 			if uri == route:#####################
 				route = Route(uri)
