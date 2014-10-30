@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*- 
 
-import Router
+import router
 
-from jinja2 import Template
-from jinja2 import FileSystemLoader
-from jinja2 import Environment
+from jinja2 import Template, FileSystemLoader, Environment
 
 news_list = ['Sport', 'Politic', 'Live', 'World', 'Economics']
 sport_list = ['Football', 'Tenis', 'Hoky', 'Basketball', 'Cars']
@@ -33,24 +31,17 @@ def main():
 		for line in file:
 			route_strings.append(line[:-1])
 
-	#print(route_strings)
-
-	router = Router.Router(route_strings)
-	route = router.route_for_uri('/news/')
+	my_router = router.Router(route_strings)
+	route = my_router.route_for_uri('/news/')
 	template = None
 
 	if route:
 		template = template_loader.get_template(route.uri + route.template)
 
-	#ith open('news.tpl', 'r') as file:
-	#	data_file = file.read()
-	#	t = Template(data_file)
-
-	#print(data_file)
 	with open('news.html', 'w') as file:
 		file.write(template.render(my_string = 'News!', my_list = news_list))
 	
-	route = router.route_for_uri('/news/sport/')
+	route = my_router.route_for_uri('/news/sport/')
 
 	if route:
 		template = template_loader.get_template(route.uri + route.template)
@@ -58,7 +49,7 @@ def main():
 	with open('news-sport.html', 'w') as file:
 		file.write(template.render(my_string = 'News-Sport!', my_list = sport_list))
 	
-	route = router.route_for_uri('/news/sport/football/')
+	route = my_router.route_for_uri('/news/sport/football/')
 
 	if route:
 		template = template_loader.get_template(route.uri + route.template)

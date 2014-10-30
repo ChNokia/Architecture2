@@ -1,7 +1,8 @@
-from urllib.parse import urlparse
+# -*- coding: utf-8 -*- 
 
 class Route(object):
 	def __init__(self, route_str):
+		self.__uri = route_str
 		self.__uri_path = self.__path_uri(route_str)
 		self.__template = 'index.tpl'
 
@@ -29,6 +30,10 @@ class Route(object):
 					return False
 
 		return True
+
+	@property
+	def uri(self):
+		return self.__uri
 
 	@property
 	def template(self):
