@@ -1,36 +1,11 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
-            <meta charset="utf-8">
-    		<title>NEWS</title>
-        <style>
-            body {
-                width: 35em;
-                margin: 1.5em;
-                font-family: Tahoma, Verdana, Arial, sans-serif;
-            }
-            h1 {
-                width: 960;
-                background: #F1A95C;
-                color: #38342E;
-                font-size: 1.5em;
-                text-align: centre;
-            }
-            table {
-            	border-collapse:collapse;
-            }
-            table, td, th {
-            	border: 2px solid #CECECE;
-            }
-            td, th {
-            	text-align:left;
-            	padding:0.5em 0.5em;
-            }
-            th
-            {
-                background: #F0F0FF;
-            }
-        </style>
+        <meta charset="utf-8">
+	<link rel="stylesheet" href="/static/style.css" type="text/css">
+    	<title>NEWS</title>
     </head>
     <body>
         <div class="container">
