@@ -3,13 +3,13 @@
 class Route(object):
 	def __init__(self, route_str):
 		self.__uri = route_str
-		self.__uri_path = self.__path_uri(route_str)
+		self.__uri_path = self.__create_path_uri(route_str)
 		self.__template = 'index.tpl'
 
 		if len(self.__uri_path) > 0:
 			self.__template = '-'.join([folder for folder in self.__uri_path]) + '.tpl'
 
-	def __path_uri(self, uri_str):
+	def __create_path_uri(self, uri_str):
 		uri_path = []
 		uri = uri_str.strip('/')
 
@@ -19,7 +19,7 @@ class Route(object):
 		return uri_path
 
 	def matches_uri(self, uri): # return bool
-		uri_path = self.__path_uri(uri)
+		uri_path = self.__create_path_uri(uri)
 
 		if len(uri_path) != len(self.__uri_path):
 			return False
