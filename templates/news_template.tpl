@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <meta charset="utf-8">
-	<link rel="stylesheet" href="/static/style.css" type="text/css">
+	<link rel="stylesheet" href="./static/style.css" type="text/css">
     	<title>NEWS</title>
     </head>
     <body>

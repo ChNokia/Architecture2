@@ -1,4 +1,4 @@
-{% extends './news_template.tpl' %}
+{% extends 'news_template.tpl' %}
 {% block content %}
     <br>
     <h3>NEWS {{my_string}}</h3>

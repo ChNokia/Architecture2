@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*- 
 
-import templateEngine
-import router
-
-import sys
 import os
-import time, Cookie
-from jinja2 import Template, FileSystemLoader, Environment
+import sys
+
+from jinja2 import (
+	Environment,
+	FileSystemLoader,
+	Template
+	)
+
+import router
+import templateEngine
 
 news_list = ['Sport', 'Politic', 'Live', 'World', 'Economics']
 sport_list = ['Football', 'Tenis', 'Hoky', 'Basketball', 'Cars']
@@ -16,16 +20,17 @@ with open('routes.conf', 'r') as file:
 		for line in file:
 			route_strings.append(line[:-1])
 
+template_loader = templateEngine.TemplateEngine(searchpath = '/usr/share/uwsgi/www/mySite/get')
+my_router = router.Router(route_strings)
+
 def do_GET(environ, environ_values):
-	template_loader = templateEngine.TemplateEngine(searchpath = '/usr/share/uwsgi/www/mySite/get')
 	template = None
-	url = (environ_values['PATH_INFO'])#create_url((environ_values['PATH_INFO'])[1:])
-	my_router = router.Router(route_strings)
+	url = (environ_values['PATH_INFO'])
 	route = my_router.route_for_uri(url)
 
 	if route:
 		template = template_loader.get_template(route.uri + route.template)
- 
+
 	response_body = template.render(my_string = 'News!', my_list = news_list)
 
 	return response_body.encode('utf-8')
@@ -44,7 +49,7 @@ def application(environ, start_response):
 			response_body = do_GET(environ, environ_values)
 		except ValueError:
 			response_body = 'Page not found'
-			status_code = '404 Not Found'
+			status_code = '404'
 	
 	response_headers.append(('Content-Type', 'text/html'))
 	response_headers.append(('Content-Length', str(len(response_body))))
